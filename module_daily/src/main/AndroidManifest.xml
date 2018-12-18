@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.rh.daily">
+
+    <application>
+
+        <activity
+            android:name="com.example.rh.daily.bing.PictureActivity"
+            android:label=""
+            android:theme="@style/PictureTheme" />
+        <activity
+            android:name=".fileExplorer.OpenFileActivity"
+            android:label=""
+            android:theme="@style/PictureTheme" />
+        <service android:name=".bing.download.DownloadService" />
+    </application>
+</manifest>

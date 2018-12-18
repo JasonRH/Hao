@@ -1,0 +1,64 @@
+<resources>
+
+    <!--隐藏ActionBar,程序使用浅色主题-->
+    <style name="DailyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/DailyColorPrimary</item>
+        <item name="colorPrimaryDark">@color/DailyColorPrimary</item>//状态栏背景色
+        <item name="colorAccent">@color/DailyColorAccent</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+    </style>
+
+
+    <style name="AnimationActivity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/anim_no</item>
+        <item name="android:activityCloseEnterAnimation">@anim/anim_no</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
+
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="TabLayout" parent="Base.Widget.Design.TabLayout">
+        <item name="tabMaxWidth">@dimen/design_tab_max_width</item>
+        <!--下标颜色-->
+        <item name="tabIndicatorColor">#00000000</item>
+        <!--下标高度-->
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabBackground">?attr/selectableItemBackground</item>
+        <!--字体-->
+        <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
+        <!--未选中字体颜色-->
+        <item name="tabTextColor">@color/tabTextColor</item>
+        <!--选中后字体颜色-->
+        <item name="tabSelectedTextColor">@color/tabSelectedTextColor</item>
+    </style>
+
+
+    <style name="ShowImage" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--背景为黑色-->
+        <item name="android:windowBackground">@android:color/background_dark</item>
+        <!--
+                //半透明
+                <item name="android:windowIsTranslucent">true</item>
+        -->
+    </style>
+
+    <style name="Fullscreen1" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="PictureTheme" parent="DailyAppTheme">
+        <!--将状态栏颜色指定成透明色,API231以上使用-->
+        <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
+    </style>
+
+
+    <style name="Theme_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+</resources>
