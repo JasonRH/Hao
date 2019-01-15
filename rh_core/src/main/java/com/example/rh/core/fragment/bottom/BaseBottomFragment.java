@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import com.example.rh.core.R;
 import com.example.rh.core.R2;
 import com.example.rh.core.base.BaseCheckerDelegate;
+import com.example.rh.core.base.BaseDelegate;
 import com.joanzapata.iconify.widget.IconTextView;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ import me.yokeyword.fragmentation.ISupportFragment;
  * @author RH
  * @date 2018/10/24
  */
-public abstract class BaseBottomFragment extends BaseCheckerDelegate implements View.OnClickListener {
+public abstract class BaseBottomFragment extends BaseDelegate implements View.OnClickListener {
     private final ArrayList<BottomTabBean> TAB_BEANS = new ArrayList<>();
     private final ArrayList<BottomItemFragment> ITEM_FRAGMENT = new ArrayList<>();
     private final LinkedHashMap<BottomTabBean, BottomItemFragment> ITEMS = new LinkedHashMap<>();
@@ -92,6 +93,7 @@ public abstract class BaseBottomFragment extends BaseCheckerDelegate implements 
             final BottomTabBean bean = TAB_BEANS.get(i);
             //初始化数据
             itemIcon.setText(bean.getIcon());
+            //itemIcon.setTextSize(25);
             itemTitle.setText(bean.getTitle());
             //初始化时加载颜色
             if (i == mIndexFragment) {

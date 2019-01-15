@@ -1,1 +1,1 @@
-include ':app', ':rh_core', ':rh_ui', ':module_daily', ':rh_bottom'
+include ':app', ':rh_core', ':rh_ui', ':module_daily', ':rh_bottom', ':module_tools'

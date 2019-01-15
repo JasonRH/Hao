@@ -18,7 +18,7 @@ public class BottomActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //实现沉浸式状态栏
-        //StatusBarCompat.translucentStatusBar(this, true);
+        StatusBarCompat.translucentStatusBar(this, true);
     }
 
     @Override

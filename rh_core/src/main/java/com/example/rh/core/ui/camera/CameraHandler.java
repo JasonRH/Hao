@@ -19,6 +19,7 @@ import com.example.rh.core.base.BaseCheckerDelegate;
 import com.example.rh.core.utils.file.FileUtil;
 
 import java.io.File;
+import java.util.Objects;
 
 /**
  * @author RH
@@ -84,7 +85,7 @@ public class CameraHandler implements View.OnClickListener {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             final ContentValues contentValues = new ContentValues(1);
             contentValues.put(MediaStore.Images.Media.DATA, tempFile.getPath());
-            final Uri uri = delegate.getContext().getContentResolver().
+            final Uri uri = Objects.requireNonNull(delegate.getContext()).getContentResolver().
                     insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
             //需要讲Uri路径转化为实际路径
             final File realFile =

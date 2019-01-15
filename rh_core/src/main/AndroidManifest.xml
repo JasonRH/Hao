@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.rh.core" >
+    package="com.example.rh.core">
 
     <!--网络权限-->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <!--拨号权限-->
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!--<uses-permission android:name="android.permission.CALL_PHONE" />-->
 
     <!--文件权限-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -21,6 +21,17 @@
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!--当前设备可以接收到基站的服务信号，便可获得位置信息-->
+    <!--<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
+
+
+    <application>
+        <!--依赖包中，剪裁图片Activity-->
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    </application>
 
 </manifest>

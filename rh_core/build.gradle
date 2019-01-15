@@ -100,4 +100,7 @@ dependencies {
     api('com.github.niorgai:StatusBarCompat:2.1.4', {
         exclude group: 'com.android.support'
     })
+
+    //图片剪裁
+    api 'com.github.yalantis:ucrop:2.2.2-native'
 }

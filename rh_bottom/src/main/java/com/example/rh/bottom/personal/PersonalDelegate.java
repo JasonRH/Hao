@@ -48,15 +48,15 @@ public class PersonalDelegate extends BottomItemFragment {
                 .build();
 
 
-        /*final ListBean address = new ListBean.Builder()
-                .setItemType(ListItemType.ITEM_NORMAL)
+        /*final ToolBean address = new ToolBean.Builder()
+                .setItemType(ToolItemType.ITEM_NORMAL)
                 .setId(1)
                 .setText("使用帮助")
                 //.setmFragment(new AddressFragment())
                 .build();
 
-        final ListBean system = new ListBean.Builder()
-                .setItemType(ListItemType.ITEM_NORMAL)
+        final ToolBean system = new ToolBean.Builder()
+                .setItemType(ToolItemType.ITEM_NORMAL)
                 .setId(2)
                 //.setmFragment(new SettingsFragment())
                 .setText("系统设置")

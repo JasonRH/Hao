@@ -38,5 +38,5 @@ dependencies {
     implementation project(':rh_bottom')
 
     //小米检查更新SDK
-    implementation 'mi-appstore:xiaomi-update-sdk:4.0.3'
+    //implementation 'mi-appstore:xiaomi-update-sdk:4.0.3'
 }

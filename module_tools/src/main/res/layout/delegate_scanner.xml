@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="30dp"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/delegate_sanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="扫描" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/delegate_sanner_local"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="本地" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/delegate_sanner_result"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="20dp"
+        android:hint="文本区"
+        android:gravity="center"
+        android:background="@drawable/btn_border" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/delegate_sanner_create"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="生成二维码" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/delegate_sanner_copy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="复制文本内容" />
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/delegate_image"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"/>
+</android.support.v7.widget.LinearLayoutCompat>

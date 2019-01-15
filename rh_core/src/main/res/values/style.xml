@@ -33,4 +33,8 @@
         <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
     </style>
 
+    <style name="Theme_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
 </resources>
