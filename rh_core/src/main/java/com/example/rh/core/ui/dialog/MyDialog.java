@@ -39,7 +39,7 @@ public class MyDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_update);
+        setContentView(R.layout.dialog);
         //设置窗体必须放在setContentView（）后面否则不生效
         Window window = getWindow();
         WindowManager.LayoutParams params = window.getAttributes();

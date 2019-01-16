@@ -1,4 +1,4 @@
-package com.example.rh.daily.bing.download;
+package com.example.rh.daily.download;
 
 import android.app.IntentService;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
-import com.example.rh.daily.bing.download.DownloadListener;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,6 +30,7 @@ public class DownloadService extends IntentService {
     private static final int TYPE_SUCCESS = 0;
     private static final int TYPE_FAILED = 1;
     private static DownloadListener listener;
+    private String filePath = "";
 
     public static void pictureDownload(DownloadListener listener1) {
         listener = listener1;
@@ -62,7 +62,7 @@ public class DownloadService extends IntentService {
         }
         switch (downLoad(url)) {
             case TYPE_SUCCESS:
-                listener.onSuccess();
+                listener.onSuccess(filePath);
                 break;
             case TYPE_FAILED:
                 listener.onFailed();
@@ -82,13 +82,14 @@ public class DownloadService extends IntentService {
             String fileName;
             if (downloadUrl.lastIndexOf("/") == -1) {
                 //下载文件无名称时
-                fileName = "";
+                fileName = System.currentTimeMillis()+"";
             } else {
                 fileName = downloadUrl.substring(downloadUrl.lastIndexOf("/"));
             }
             //SD卡的Download目录
             String directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath();
-            file = new File(directory + fileName);
+            filePath =directory + fileName;
+            file = new File(filePath);
             if (file.exists()) {
                 downloadedLength = file.length();
             }
@@ -126,7 +127,6 @@ public class DownloadService extends IntentService {
 
                 }
                 response.body().close();
-                //Log.e("DownloadTask", "下载完成 ");
                 return TYPE_SUCCESS;
             }
         } catch (IOException e) {

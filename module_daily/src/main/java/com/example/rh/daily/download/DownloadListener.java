@@ -1,4 +1,4 @@
-package com.example.rh.daily.bing.download;
+package com.example.rh.daily.download;
 
 /**
  *
@@ -7,6 +7,6 @@ package com.example.rh.daily.bing.download;
  */
 
 public interface DownloadListener {
-    void onSuccess();
+    void onSuccess(String filePath);
     void onFailed();
 }

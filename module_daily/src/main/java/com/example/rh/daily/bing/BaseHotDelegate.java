@@ -18,7 +18,7 @@ import com.example.rh.daily.R;
  * @author RH
  * @date 2018/3/29
  */
-public abstract class BaseHotchpotchFragment<T extends BasePresenter> extends BaseDelegate<T> implements SwipeRefreshLayout.OnRefreshListener {
+public abstract class BaseHotDelegate<T extends BasePresenter> extends BaseDelegate<T> implements SwipeRefreshLayout.OnRefreshListener {
 
     protected RecyclerView recyclerView;
     protected SwipeRefreshLayout refreshLayout;

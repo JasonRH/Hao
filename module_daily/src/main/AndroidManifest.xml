@@ -4,13 +4,22 @@
     <application>
 
         <activity
-            android:name="com.example.rh.daily.bing.PictureActivity"
+            android:name="com.example.rh.daily.activity.PictureActivity"
             android:label=""
             android:theme="@style/PictureTheme" />
         <activity
             android:name=".fileExplorer.OpenFileActivity"
             android:label=""
             android:theme="@style/PictureTheme" />
-        <service android:name=".bing.download.DownloadService" />
+
+        <service android:name=".download.DownloadService" />
+
+
+        <activity
+            android:name=".activity.ShowImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ShowImage" />
+
+
     </application>
 </manifest>

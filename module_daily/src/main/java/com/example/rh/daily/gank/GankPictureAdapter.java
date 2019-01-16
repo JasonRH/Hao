@@ -1,4 +1,4 @@
-package com.example.rh.daily.bing;
+package com.example.rh.daily.gank;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,18 +12,17 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.rh.daily.R;
-import com.example.rh.daily.activity.PictureActivity;
+import com.example.rh.daily.activity.ShowImageActivity;
 
 import java.util.List;
 
 /**
  * @author RH
- * @date 2017/11/3
+ * @date 2019/1/16
  */
-
-public class BingPictureAdapter extends RecyclerView.Adapter<BingPictureAdapter.ViewHolder> {
+public class GankPictureAdapter extends RecyclerView.Adapter<GankPictureAdapter.ViewHolder> {
     private Context mContext;
-    private List<BingDailyBean> mPictureList;
+    private List<String> mPictureList;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView pictureImage;
@@ -38,25 +37,25 @@ public class BingPictureAdapter extends RecyclerView.Adapter<BingPictureAdapter.
         }
     }
 
-    public BingPictureAdapter(List<BingDailyBean> mPictureList) {
+    public GankPictureAdapter(List<String> mPictureList) {
         this.mPictureList = mPictureList;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public GankPictureAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (mContext == null) {
             mContext = parent.getContext();
         }
         View view = LayoutInflater.from(mContext).inflate(R.layout.adapter_bing_picture_item, parent, false);
-        final ViewHolder holder = new ViewHolder(view);
-
+        final GankPictureAdapter.ViewHolder holder = new GankPictureAdapter.ViewHolder(view);
+        holder.pictureName.setVisibility(View.GONE);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
-                BingDailyBean bingDailyBean = mPictureList.get(position);
-                Intent intent = new Intent(mContext, PictureActivity.class);
-                intent.putExtra("BingDaily_data", bingDailyBean);
+                String picture = mPictureList.get(position);
+                Intent intent = new Intent(mContext, ShowImageActivity.class);
+                intent.putExtra("imageUrl", picture);
                 mContext.startActivity(intent);
             }
         });
@@ -65,10 +64,9 @@ public class BingPictureAdapter extends RecyclerView.Adapter<BingPictureAdapter.
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        BingDailyBean picture = mPictureList.get(position);
-        holder.pictureName.setText(picture.getDate());
-        Glide.with(mContext).load(picture.getUrl()).into(holder.pictureImage);
+    public void onBindViewHolder(GankPictureAdapter.ViewHolder holder, int position) {
+        String picture = mPictureList.get(position);
+        Glide.with(mContext).load(picture).into(holder.pictureImage);
 
     }
 

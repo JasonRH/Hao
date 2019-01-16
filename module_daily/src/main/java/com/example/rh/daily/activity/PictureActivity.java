@@ -1,10 +1,12 @@
-package com.example.rh.daily.bing;
+package com.example.rh.daily.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -25,11 +27,15 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.bumptech.glide.Glide;
 import com.example.rh.core.app.MyApp;
+import com.example.rh.core.ui.dialog.MyDialog;
+import com.example.rh.daily.bing.BingDailyBean;
 import com.example.rh.daily.bing.net.HttpCallbackListener;
 import com.example.rh.daily.bing.net.HttpUtils;
 import com.example.rh.daily.R;
-import com.example.rh.daily.bing.download.DownloadListener;
-import com.example.rh.daily.bing.download.DownloadService;
+import com.example.rh.daily.download.DownloadListener;
+import com.example.rh.daily.download.DownloadService;
+
+import java.io.File;
 
 /**
  * @author RH
@@ -47,7 +53,7 @@ public class PictureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture);
 
-        Toolbar toolbar1 = (Toolbar) findViewById(R.id.toolbar1);
+        Toolbar toolbar1 = findViewById(R.id.toolbar1);
         //设置toolbar替代原ActionBar
         setSupportActionBar(toolbar1);
         ActionBar actionBar = getSupportActionBar();
@@ -81,7 +87,7 @@ public class PictureActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final MyDialog myDialog = new MyDialog(v.getContext());
                 myDialog.setTitle("是否下载当前图片？");
-                myDialog.setMessage("默认下载路径为：/sdcard/Download");
+                myDialog.setMessage("默认下载路径为："+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath());
                 myDialog.setYesOnclickListener("立即下载", new MyDialog.YesOnclickListener() {
                     @Override
                     public void onYesClick() {
@@ -95,11 +101,13 @@ public class PictureActivity extends AppCompatActivity {
                                 download.putExtra("url", pictureImageId);
                                 DownloadService.pictureDownload(new DownloadListener() {
                                     @Override
-                                    public void onSuccess() {
+                                    public void onSuccess(String filePath) {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
                                                 Toast.makeText(MyApp.getApplicationContext(), "图片下载成功", Toast.LENGTH_SHORT).show();
+                                                //最后通知图库更新
+                                                sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(filePath))));
                                             }
                                         });
                                     }
@@ -197,11 +205,13 @@ public class PictureActivity extends AppCompatActivity {
                         download.putExtra("url", pictureImageId);
                         DownloadService.pictureDownload(new DownloadListener() {
                             @Override
-                            public void onSuccess() {
+                            public void onSuccess(String filePath) {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
                                         Toast.makeText(MyApp.getApplicationContext(), "图片下载成功", Toast.LENGTH_SHORT).show();
+                                        //最后通知图库更新
+                                        sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(filePath))));
                                     }
                                 });
                             }

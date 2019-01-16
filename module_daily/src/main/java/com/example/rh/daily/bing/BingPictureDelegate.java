@@ -14,7 +14,7 @@ import io.reactivex.disposables.CompositeDisposable;
  * @author RH
  * @date 2018/1/23
  */
-public class BingPictureFragment extends BaseHotchpotchFragment<BingPicturePresenter> implements IBing.View {
+public class BingPictureDelegate extends BaseHotDelegate<BingPicturePresenter> implements IBing.View {
     private List<BingDailyBean> bingDailyBeanList = new ArrayList<>();
     private BingPictureAdapter bingPictureAdapter;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
