@@ -9,8 +9,9 @@ import java.util.List;
  */
 public interface IBing {
     interface View {
+        void onLoadNewData(List<BingDailyBean> list);
 
-        void onUpdateUI(List<BingDailyBean> list);
+        void onLoadMoreData(List<BingDailyBean> list);
 
         void stopLoading();
 
@@ -20,7 +21,7 @@ public interface IBing {
 
     interface Presenter {
 
-        void loadData();
+        void loadData(int page);
 
     }
 }

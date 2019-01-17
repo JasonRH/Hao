@@ -2,8 +2,10 @@ package com.example.rh.daily.gank;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
-import com.example.rh.daily.bing.BaseHotDelegate;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.example.rh.daily.fragment.BaseHotDelegate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,15 +16,17 @@ import io.reactivex.disposables.CompositeDisposable;
  * @author RH
  * @date 2019/1/16
  */
-public class GankPictureDelegate extends BaseHotDelegate<GankPicturePresenter> implements IGank.View{
+public class GankPictureDelegate extends BaseHotDelegate<GankPicturePresenter> implements IGank.View {
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
     private List<String> mPictureList = new ArrayList<>();
     private GankPictureAdapter adapter;
+    private int page = 1;
 
     @Override
     public void onRefresh() {
         refreshLayout.setRefreshing(true);
-        presenter.loadData();
+        page = 1;
+        presenter.loadData(page);
     }
 
     @Override
@@ -36,6 +40,16 @@ public class GankPictureDelegate extends BaseHotDelegate<GankPicturePresenter> i
         adapter = new GankPictureAdapter(mPictureList);
         recyclerView.setAdapter(adapter);
         onRefresh();
+
+        //加载更多
+        adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+            @Override
+            public void onLoadMoreRequested() {
+                if (presenter != null) {
+                    presenter.loadData(page);
+                }
+            }
+        }, recyclerView);
     }
 
     @Override
@@ -47,10 +61,23 @@ public class GankPictureDelegate extends BaseHotDelegate<GankPicturePresenter> i
     }
 
     @Override
-    public void onUpdateUI(List<String> list) {
-        mPictureList.clear();
-        mPictureList.addAll(list);
-        adapter.notifyDataSetChanged();
+    public void onLoadNewData(List<String> list) {
+        if (list != null && list.size() != 0) {
+            page++;
+            adapter.setNewData(list);
+        }
+    }
+
+    @Override
+    public void onLoadMoreData(List<String> list) {
+        if (list == null || list.size() == 0) {
+            //加载完成
+            adapter.loadMoreEnd();
+        } else {
+            page++;
+            adapter.addData(list);
+            adapter.loadMoreComplete();
+        }
     }
 
     @Override
@@ -60,6 +87,11 @@ public class GankPictureDelegate extends BaseHotDelegate<GankPicturePresenter> i
 
     @Override
     public void showToast(String s) {
-
+        if (page > 1) {
+            //加载失败
+            adapter.loadMoreFail();
+        } else {
+            Toast.makeText(this.getContext(), s, Toast.LENGTH_SHORT).show();
+        }
     }
 }

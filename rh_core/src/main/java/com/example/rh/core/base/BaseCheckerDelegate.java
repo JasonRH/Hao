@@ -18,6 +18,7 @@ import com.example.rh.core.utils.callback.IGlobalCallback;
 import com.example.rh.core.utils.log.MyLogger;
 import com.yalantis.ucrop.UCrop;
 
+import java.io.File;
 import java.util.Objects;
 
 import permissions.dispatcher.NeedsPermission;
@@ -142,6 +143,8 @@ public abstract class BaseCheckerDelegate extends BaseFragment {
                     }*/
                     if (cropUri != null) {
                         Toast.makeText(getContext(), "剪裁成功，存储路径为："+cropUri.getPath(), Toast.LENGTH_LONG).show();
+                        //最后通知图库更新
+                        getContext().sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(cropUri.getPath()))));
                     }
                     break;
                 case RequestCodes.CROP_ERROR:

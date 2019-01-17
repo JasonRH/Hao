@@ -11,7 +11,9 @@ import java.util.List;
 public class IGank {
     interface View {
 
-        void onUpdateUI(List<String> list);
+        void onLoadNewData(List<String> list);
+
+        void onLoadMoreData(List<String> list);
 
         void stopLoading();
 
@@ -21,7 +23,7 @@ public class IGank {
 
     interface Presenter {
 
-        void loadData();
+        void loadData(int page);
 
     }
 }

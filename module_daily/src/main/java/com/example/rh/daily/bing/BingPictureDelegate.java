@@ -2,8 +2,12 @@ package com.example.rh.daily.bing;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.Toast;
 
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.example.rh.daily.fragment.BaseHotDelegate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,33 +22,57 @@ public class BingPictureDelegate extends BaseHotDelegate<BingPicturePresenter> i
     private List<BingDailyBean> bingDailyBeanList = new ArrayList<>();
     private BingPictureAdapter bingPictureAdapter;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
-
+    private int page = 1;
 
     @Override
     protected BingPicturePresenter setPresenter() {
         return new BingPicturePresenter(compositeDisposable);
     }
 
-
     @Override
-    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
-        super.onLazyInitView(savedInstanceState);
+    protected void onBindView(Bundle savedInstanceState, View rootView) {
+        super.onBindView(savedInstanceState, rootView);
         bingPictureAdapter = new BingPictureAdapter(bingDailyBeanList);
         recyclerView.setAdapter(bingPictureAdapter);
+        //加载更多
+        bingPictureAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+            @Override
+            public void onLoadMoreRequested() {
+                if (presenter != null) {
+                    presenter.loadData(page);
+                }
+            }
+        }, recyclerView);
+
         onRefresh();
     }
+
 
     @Override
     public void onRefresh() {
         refreshLayout.setRefreshing(true);
-        presenter.loadData();
+        page = 1;
+        presenter.loadData(page);
     }
 
     @Override
-    public void onUpdateUI(List<BingDailyBean> list) {
-        bingDailyBeanList.clear();
-        bingDailyBeanList.addAll(list);
-        bingPictureAdapter.notifyDataSetChanged();
+    public void onLoadNewData(List<BingDailyBean> list) {
+        if (list != null && list.size() != 0) {
+            page++;
+            bingPictureAdapter.setNewData(list);
+        }
+    }
+
+    @Override
+    public void onLoadMoreData(List<BingDailyBean> list) {
+        if (list == null || list.size() == 0) {
+            //加载完成
+            bingPictureAdapter.loadMoreEnd();
+        } else {
+            page++;
+            bingPictureAdapter.addData(list);
+            bingPictureAdapter.loadMoreComplete();
+        }
     }
 
     @Override
@@ -54,7 +82,12 @@ public class BingPictureDelegate extends BaseHotDelegate<BingPicturePresenter> i
 
     @Override
     public void showToast(String s) {
-        Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
+        if (page > 1) {
+            //加载失败
+            bingPictureAdapter.loadMoreFail();
+        } else {
+            Toast.makeText(this.getContext(), s, Toast.LENGTH_SHORT).show();
+        }
     }
 
 

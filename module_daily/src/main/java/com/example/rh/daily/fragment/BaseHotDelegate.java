@@ -1,4 +1,4 @@
-package com.example.rh.daily.bing;
+package com.example.rh.daily.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

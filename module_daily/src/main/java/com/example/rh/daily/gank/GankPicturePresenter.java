@@ -35,9 +35,9 @@ public class GankPicturePresenter extends BasePresenter<IGank.View> implements P
     }
 
     @Override
-    public void loadData() {
+    public void loadData(int page) {
         RxRetrofitClient.builder()
-                .url("http://gank.io/api/data/福利/10/1")
+                .url("http://gank.io/api/data/福利/10/" + page)
                 .build()
                 .get()
                 .subscribeOn(Schedulers.io())
@@ -58,7 +58,11 @@ public class GankPicturePresenter extends BasePresenter<IGank.View> implements P
                             String url = object.getString("url");
                             list.add(url);
                         }
-                        getMyView().onUpdateUI(list);
+                        if (page > 1) {
+                            getMyView().onLoadMoreData(list);
+                        } else {
+                            getMyView().onLoadNewData(list);
+                        }
                     }
 
                     @Override
@@ -74,7 +78,7 @@ public class GankPicturePresenter extends BasePresenter<IGank.View> implements P
                             e.printStackTrace();
                         } else {
                             //_onError("请求失败，稍后再试");
-                            getMyView().showToast("网络数据获取失败\n" + e);
+                            getMyView().showToast("网络数据获取失败");
                         }
 
                         getMyView().stopLoading();

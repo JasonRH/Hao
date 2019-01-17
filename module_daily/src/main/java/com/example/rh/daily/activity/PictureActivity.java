@@ -87,7 +87,7 @@ public class PictureActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final MyDialog myDialog = new MyDialog(v.getContext());
                 myDialog.setTitle("是否下载当前图片？");
-                myDialog.setMessage("默认下载路径为："+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath());
+                myDialog.setMessage("默认下载路径为：" + Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath());
                 myDialog.setYesOnclickListener("立即下载", new MyDialog.YesOnclickListener() {
                     @Override
                     public void onYesClick() {
@@ -95,35 +95,7 @@ public class PictureActivity extends AppCompatActivity {
                         if (ContextCompat.checkSelfPermission(PictureActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                             ActivityCompat.requestPermissions(PictureActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                         } else {
-                            if (pictureImageId != null && !TextUtils.isEmpty(pictureImageId)) {
-                                Toast.makeText(MyApp.getApplicationContext(), "图片下载中，请稍等......", Toast.LENGTH_SHORT).show();
-                                Intent download = new Intent(PictureActivity.this, DownloadService.class);
-                                download.putExtra("url", pictureImageId);
-                                DownloadService.pictureDownload(new DownloadListener() {
-                                    @Override
-                                    public void onSuccess(String filePath) {
-                                        runOnUiThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                Toast.makeText(MyApp.getApplicationContext(), "图片下载成功", Toast.LENGTH_SHORT).show();
-                                                //最后通知图库更新
-                                                sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(filePath))));
-                                            }
-                                        });
-                                    }
-
-                                    @Override
-                                    public void onFailed() {
-                                        runOnUiThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                Toast.makeText(MyApp.getApplicationContext(), "图片下载失败", Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
-                                    }
-                                });
-                                startService(download);
-                            }
+                            download();
                         }
                         myDialog.dismiss();
                     }
@@ -197,41 +169,44 @@ public class PictureActivity extends AppCompatActivity {
             case 1:
                 if (grantResults.length > 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(MyApp.getApplicationContext(), "权限拒绝，无法下载！", Toast.LENGTH_SHORT).show();
-
                 } else {
-                    if (pictureImageId != null && !TextUtils.isEmpty(pictureImageId)) {
-                        Toast.makeText(MyApp.getApplicationContext(), "权限已获取，开始下载图片......", Toast.LENGTH_SHORT).show();
-                        Intent download = new Intent(this, DownloadService.class);
-                        download.putExtra("url", pictureImageId);
-                        DownloadService.pictureDownload(new DownloadListener() {
-                            @Override
-                            public void onSuccess(String filePath) {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Toast.makeText(MyApp.getApplicationContext(), "图片下载成功", Toast.LENGTH_SHORT).show();
-                                        //最后通知图库更新
-                                        sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(filePath))));
-                                    }
-                                });
-                            }
-
-                            @Override
-                            public void onFailed() {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Toast.makeText(MyApp.getApplicationContext(), "图片下载失败", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
-                        });
-                        startService(download);
-                    }
+                    download();
                 }
                 break;
             default:
         }
     }
 
+
+    private void download() {
+        if (pictureImageId != null && !TextUtils.isEmpty(pictureImageId)) {
+            Toast.makeText(MyApp.getApplicationContext(), "权限已获取，开始下载图片......", Toast.LENGTH_SHORT).show();
+            Intent download = new Intent(this, DownloadService.class);
+            download.putExtra("url", pictureImageId);
+            DownloadService.pictureDownload(new DownloadListener() {
+                @Override
+                public void onSuccess(String filePath) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(MyApp.getApplicationContext(), "图片下载成功", Toast.LENGTH_SHORT).show();
+                            //最后通知图库更新
+                            sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(filePath))));
+                        }
+                    });
+                }
+
+                @Override
+                public void onFailed() {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(MyApp.getApplicationContext(), "图片下载失败", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            });
+            startService(download);
+        }
+    }
 }

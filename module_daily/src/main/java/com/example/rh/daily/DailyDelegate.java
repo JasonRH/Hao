@@ -46,10 +46,10 @@ public class DailyDelegate extends BottomItemFragment {
 
     private void initFragmentPagerAdapter() {
         List<Fragment> fragmentList = new ArrayList<>();
-        String[] strings = new String[]{"必应","美女"};
+        String[] strings = new String[]{"必应","美女","段子"};
         fragmentList.add(new BingPictureDelegate());
         fragmentList.add(new GankPictureDelegate());
-        //fragmentList.add(new BingPictureDelegate());
+        fragmentList.add(new BingPictureDelegate());
         DailyFragmentPagerAdapter pagerAdapter = new DailyFragmentPagerAdapter(getChildFragmentManager(), fragmentList, strings);
         viewPager.setAdapter(pagerAdapter);
     }

@@ -7,6 +7,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.rh.core.base.BasePresenter;
 import com.example.rh.core.net_rx.RxRetrofitClient;
+import com.example.rh.core.utils.log.MyLogger;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
@@ -34,9 +35,14 @@ public class BingPicturePresenter extends BasePresenter<IBing.View> implements I
     }
 
     @Override
-    public void loadData() {
+    public void loadData(int page) {
+        String l = linksConvert(page);
+        if (l == null) {
+            getMyView().onLoadMoreData(null);
+            return;
+        }
         RxRetrofitClient.builder()
-                .url("http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n= + 8")
+                .url(l)
                 .build()
                 .get()
                 .subscribeOn(Schedulers.io())
@@ -63,7 +69,12 @@ public class BingPicturePresenter extends BasePresenter<IBing.View> implements I
                             dailyBean.setCopyright(copyright);
                             bingDailyBeans.add(dailyBean);
                         }
-                        getMyView().onUpdateUI(bingDailyBeans);
+
+                        if (page > 1) {
+                            getMyView().onLoadMoreData(bingDailyBeans);
+                        } else {
+                            getMyView().onLoadNewData(bingDailyBeans);
+                        }
                     }
 
                     @Override
@@ -92,4 +103,14 @@ public class BingPicturePresenter extends BasePresenter<IBing.View> implements I
                 });
     }
 
+
+    private String linksConvert(int page) {
+        String link = null;
+        if (page == 1) {
+            link = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=-1&n=8";
+        } else if (page == 2) {
+            link = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=7&n=8";
+        }
+        return link;
+    }
 }

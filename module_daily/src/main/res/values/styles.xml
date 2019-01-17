@@ -36,6 +36,10 @@
         <item name="tabSelectedTextColor">@color/tabSelectedTextColor</item>
     </style>
 
+    <style name="CustomTabTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">16sp</item>
+    </style>
+
 
     <style name="ShowImage" parent="Theme.AppCompat.Light.NoActionBar">
         <!--背景为黑色-->

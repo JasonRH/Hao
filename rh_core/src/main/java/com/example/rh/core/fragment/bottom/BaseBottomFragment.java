@@ -93,7 +93,6 @@ public abstract class BaseBottomFragment extends BaseDelegate implements View.On
             final BottomTabBean bean = TAB_BEANS.get(i);
             //初始化数据
             itemIcon.setText(bean.getIcon());
-            //itemIcon.setTextSize(25);
             itemTitle.setText(bean.getTitle());
             //初始化时加载颜色
             if (i == mIndexFragment) {
