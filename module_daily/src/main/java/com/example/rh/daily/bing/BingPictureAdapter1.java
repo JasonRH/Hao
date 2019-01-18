@@ -48,7 +48,7 @@ public class BingPictureAdapter1 extends RecyclerView.Adapter<BingPictureAdapter
         if (mContext == null) {
             mContext = parent.getContext();
         }
-        View view = LayoutInflater.from(mContext).inflate(R.layout.adapter_bing_picture_item, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.adapter_picture_item, parent, false);
         final ViewHolder holder = new ViewHolder(view);
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {

@@ -10,6 +10,7 @@ import com.example.rh.core.base.BasePresenter;
 import com.example.rh.core.fragment.bottom.BottomItemFragment;
 import com.example.rh.daily.bing.BingPictureDelegate;
 import com.example.rh.daily.gank.GankPictureDelegate;
+import com.example.rh.daily.gank.expand.ExpandDelegate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,10 +47,10 @@ public class DailyDelegate extends BottomItemFragment {
 
     private void initFragmentPagerAdapter() {
         List<Fragment> fragmentList = new ArrayList<>();
-        String[] strings = new String[]{"必应","美女","段子"};
+        String[] strings = new String[]{"文章", "必应", "美女"};
+        fragmentList.add(new ExpandDelegate());
         fragmentList.add(new BingPictureDelegate());
         fragmentList.add(new GankPictureDelegate());
-        fragmentList.add(new BingPictureDelegate());
         DailyFragmentPagerAdapter pagerAdapter = new DailyFragmentPagerAdapter(getChildFragmentManager(), fragmentList, strings);
         viewPager.setAdapter(pagerAdapter);
     }

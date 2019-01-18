@@ -23,7 +23,7 @@ import java.util.List;
 public class GankPictureAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
     public GankPictureAdapter(@Nullable List<String> data) {
-        super(R.layout.adapter_bing_picture_item, data);
+        super(R.layout.adapter_picture_item, data);
     }
 
     @Override

@@ -23,13 +23,6 @@ public class GankPictureDelegate extends BaseHotDelegate<GankPicturePresenter> i
     private int page = 1;
 
     @Override
-    public void onRefresh() {
-        refreshLayout.setRefreshing(true);
-        page = 1;
-        presenter.loadData(page);
-    }
-
-    @Override
     protected GankPicturePresenter setPresenter() {
         return new GankPicturePresenter(compositeDisposable);
     }
@@ -53,11 +46,10 @@ public class GankPictureDelegate extends BaseHotDelegate<GankPicturePresenter> i
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        //切断所有订阅事件，防止内存泄漏。
-        compositeDisposable.clear();
-        //取消Fragment和Presenter之间的关联
+    public void onRefresh() {
+        refreshLayout.setRefreshing(true);
+        page = 1;
+        presenter.loadData(page);
     }
 
     @Override
@@ -93,5 +85,13 @@ public class GankPictureDelegate extends BaseHotDelegate<GankPicturePresenter> i
         } else {
             Toast.makeText(this.getContext(), s, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //切断所有订阅事件，防止内存泄漏。
+        compositeDisposable.clear();
+        //取消Fragment和Presenter之间的关联
     }
 }

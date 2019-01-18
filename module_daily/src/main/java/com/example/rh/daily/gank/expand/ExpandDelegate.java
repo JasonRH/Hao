@@ -1,12 +1,13 @@
-package com.example.rh.daily.bing;
+package com.example.rh.daily.gank.expand;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Toast;
 
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.example.rh.core.fragment.web.WebFragmentImpl;
+import com.example.rh.daily.R;
 import com.example.rh.daily.fragment.BaseHotDelegate;
 
 import java.util.ArrayList;
@@ -16,26 +17,31 @@ import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * @author RH
- * @date 2018/1/23
+ * @date 2019/1/17
  */
-public class BingPictureDelegate extends BaseHotDelegate<BingPicturePresenter> implements IBing.View {
-    private List<BingDailyBean> bingDailyBeanList = new ArrayList<>();
-    private BingPictureAdapter bingPictureAdapter;
+public class ExpandDelegate extends BaseHotDelegate<ExpandPresenter> implements IExpand.View {
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private List<ExpandBean> dataList = new ArrayList<>();
+    private ExpandAdapter adapter;
     private int page = 1;
 
     @Override
-    protected BingPicturePresenter setPresenter() {
-        return new BingPicturePresenter(compositeDisposable);
+    protected ExpandPresenter setPresenter() {
+        return new ExpandPresenter(compositeDisposable);
     }
 
     @Override
-    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
-        super.onLazyInitView(savedInstanceState);
-        bingPictureAdapter = new BingPictureAdapter(bingDailyBeanList);
-        recyclerView.setAdapter(bingPictureAdapter);
+    protected void onBindView(Bundle savedInstanceState, View rootView) {
+        super.onBindView(savedInstanceState, rootView);
+        adapter = new ExpandAdapter(dataList);
+        recyclerView.setAdapter(adapter);
+        onRefresh();
+        //开启动画
+        adapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
+        adapter.isFirstOnly(false);
+
         //加载更多
-        bingPictureAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+        adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
                 if (presenter != null) {
@@ -44,7 +50,6 @@ public class BingPictureDelegate extends BaseHotDelegate<BingPicturePresenter> i
             }
         }, recyclerView);
 
-        onRefresh();
     }
 
     @Override
@@ -55,22 +60,22 @@ public class BingPictureDelegate extends BaseHotDelegate<BingPicturePresenter> i
     }
 
     @Override
-    public void onLoadNewData(List<BingDailyBean> list) {
+    public void onLoadNewData(List<ExpandBean> list) {
         if (list != null && list.size() != 0) {
             page++;
-            bingPictureAdapter.setNewData(list);
+            adapter.setNewData(list);
         }
     }
 
     @Override
-    public void onLoadMoreData(List<BingDailyBean> list) {
+    public void onLoadMoreData(List<ExpandBean> list) {
         if (list == null || list.size() == 0) {
             //加载完成
-            bingPictureAdapter.loadMoreEnd();
+            adapter.loadMoreEnd();
         } else {
             page++;
-            bingPictureAdapter.addData(list);
-            bingPictureAdapter.loadMoreComplete();
+            adapter.addData(list);
+            adapter.loadMoreComplete();
         }
     }
 
@@ -83,12 +88,11 @@ public class BingPictureDelegate extends BaseHotDelegate<BingPicturePresenter> i
     public void showToast(String s) {
         if (page > 1) {
             //加载失败
-            bingPictureAdapter.loadMoreFail();
+            adapter.loadMoreFail();
         } else {
             Toast.makeText(this.getContext(), s, Toast.LENGTH_SHORT).show();
         }
     }
-
 
     @Override
     public void onDestroy() {

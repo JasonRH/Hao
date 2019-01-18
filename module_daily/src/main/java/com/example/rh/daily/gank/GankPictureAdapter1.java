@@ -46,7 +46,7 @@ public class GankPictureAdapter1 extends RecyclerView.Adapter<GankPictureAdapter
         if (mContext == null) {
             mContext = parent.getContext();
         }
-        View view = LayoutInflater.from(mContext).inflate(R.layout.adapter_bing_picture_item, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.adapter_picture_item, parent, false);
         final GankPictureAdapter1.ViewHolder holder = new GankPictureAdapter1.ViewHolder(view);
         holder.pictureName.setVisibility(View.GONE);
         holder.cardView.setOnClickListener(new View.OnClickListener() {

@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.rh.daily.R;
@@ -24,7 +23,7 @@ import java.util.List;
 public class BingPictureAdapter extends BaseQuickAdapter<BingDailyBean, BaseViewHolder> {
 
     public BingPictureAdapter(@Nullable List<BingDailyBean> data) {
-        super(R.layout.adapter_bing_picture_item, data);
+        super(R.layout.adapter_picture_item, data);
     }
 
     @Override
