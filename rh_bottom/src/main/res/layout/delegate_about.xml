@@ -24,7 +24,6 @@
         android:layout_height="match_parent"
         android:gravity="top|left"
         android:padding="20dp"
-        android:text="App简介获取失败"
         android:textColor="@android:color/darker_gray"
         android:textSize="18sp" />
 

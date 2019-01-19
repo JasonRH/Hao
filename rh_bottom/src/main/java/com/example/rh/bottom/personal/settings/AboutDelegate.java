@@ -12,6 +12,7 @@ import com.example.rh.bottom.R2;
 import com.example.rh.core.base.BaseDelegate;
 import com.example.rh.core.base.BasePresenter;
 import com.example.rh.core.net_rx.RxRetrofitClient;
+import com.example.rh.core.ui.loader.MyLoader;
 import com.example.rh.core.utils.log.MyLogger;
 
 import butterknife.BindView;
@@ -56,19 +57,22 @@ public class AboutDelegate extends BaseDelegate {
                     public void onNext(String s) {
                         final String info = JSON.parseObject(s).getString("toolData");
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                            mTextView.setText(Html.fromHtml(info,Html.FROM_HTML_MODE_COMPACT));
-                        }else {
+                            mTextView.setText(Html.fromHtml(info, Html.FROM_HTML_MODE_COMPACT));
+                        } else {
                             mTextView.setText(info);
                         }
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        //取消进度条
+                        MyLoader.stopLoading();
                     }
 
                     @Override
                     public void onComplete() {
-
+                        //取消进度条
+                        MyLoader.stopLoading();
                     }
                 });
     }

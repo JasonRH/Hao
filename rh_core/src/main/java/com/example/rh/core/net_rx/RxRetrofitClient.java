@@ -120,9 +120,6 @@ public class RxRetrofitClient {
                 break;
             default:
         }
-        //取消进度条Dialog
-        onRequestFinish();
-
         return observable;
     }
 
@@ -134,15 +131,4 @@ public class RxRetrofitClient {
         return responseBodyObservable;
     }
 
-    private void onRequestFinish() {
-        //取消进度条Dialog
-        if (LOADER_STYLE != null) {
-            MyApp.getHandler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    MyLoader.stopLoading();
-                }
-            }, 0);
-        }
-    }
 }
