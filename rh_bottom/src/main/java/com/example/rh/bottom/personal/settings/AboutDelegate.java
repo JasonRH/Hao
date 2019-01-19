@@ -41,7 +41,7 @@ public class AboutDelegate extends BaseDelegate {
     protected void onBindView(Bundle savedInstanceState, View rootView) {
         RxRetrofitClient.builder()
                 .loader(getContext())
-                .url("https://github.com/JasonRH/Hao/blob/master/about_app.json")
+                .url("https://raw.githubusercontent.com/JasonRH/Hao/master/about_app.json")
                 .build()
                 .get()
                 .subscribeOn(Schedulers.io())
