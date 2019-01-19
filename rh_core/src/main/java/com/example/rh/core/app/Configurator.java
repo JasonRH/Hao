@@ -34,6 +34,7 @@ public class Configurator {
      */
     private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 
+    /**使用静态，避免内存泄露*/
     private static final Handler HANDLER = new Handler();
 
     private Configurator() {

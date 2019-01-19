@@ -1,4 +1,4 @@
-package com.example.rh.daily.gank;
+package com.example.rh.daily.gank.beauty;
 
 import android.accounts.NetworkErrorException;
 
@@ -7,7 +7,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.rh.core.base.BasePresenter;
 import com.example.rh.core.net_rx.RxRetrofitClient;
-import com.example.rh.daily.gank.IGank.Presenter;
+import com.example.rh.daily.gank.beauty.IGank.Presenter;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;

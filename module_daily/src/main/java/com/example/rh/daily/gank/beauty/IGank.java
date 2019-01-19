@@ -1,4 +1,4 @@
-package com.example.rh.daily.gank;
+package com.example.rh.daily.gank.beauty;
 
 import com.example.rh.daily.bing.BingDailyBean;
 

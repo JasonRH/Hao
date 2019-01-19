@@ -9,7 +9,7 @@ import android.view.View;
 import com.example.rh.core.base.BasePresenter;
 import com.example.rh.core.fragment.bottom.BottomItemFragment;
 import com.example.rh.daily.bing.BingPictureDelegate;
-import com.example.rh.daily.gank.GankPictureDelegate;
+import com.example.rh.daily.gank.beauty.GankPictureDelegate;
 import com.example.rh.daily.gank.expand.ExpandDelegate;
 
 import java.util.ArrayList;

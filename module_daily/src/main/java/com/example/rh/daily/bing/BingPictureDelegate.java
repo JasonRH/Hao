@@ -2,7 +2,6 @@ package com.example.rh.daily.bing;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.View;
 import android.widget.Toast;
 
 

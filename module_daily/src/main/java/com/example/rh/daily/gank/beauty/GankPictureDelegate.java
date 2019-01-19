@@ -1,4 +1,4 @@
-package com.example.rh.daily.gank;
+package com.example.rh.daily.gank.beauty;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

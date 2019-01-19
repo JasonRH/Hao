@@ -2,6 +2,7 @@ package com.example.rh.core.net_rx;
 
 import android.content.Context;
 
+import com.example.rh.core.app.MyApp;
 import com.example.rh.core.ui.loader.LoaderStyle;
 import com.example.rh.core.ui.loader.MyLoader;
 
@@ -119,6 +120,8 @@ public class RxRetrofitClient {
                 break;
             default:
         }
+        //取消进度条Dialog
+        onRequestFinish();
 
         return observable;
     }
@@ -129,5 +132,17 @@ public class RxRetrofitClient {
     public final Observable<ResponseBody> download() {
         final Observable<ResponseBody> responseBodyObservable = RxRetrofitCreator.getRxRetrofitService().download(URL, PARAMS);
         return responseBodyObservable;
+    }
+
+    private void onRequestFinish() {
+        //取消进度条Dialog
+        if (LOADER_STYLE != null) {
+            MyApp.getHandler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    MyLoader.stopLoading();
+                }
+            }, 0);
+        }
     }
 }
