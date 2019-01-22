@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.Html;
 import android.view.View;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.example.rh.bottom.R;
@@ -43,6 +44,7 @@ public class AboutDelegate extends BaseDelegate {
         RxRetrofitClient.builder()
                 .loader(getContext())
                 .url("https://raw.githubusercontent.com/JasonRH/Hao/master/about_app.json")
+                //.url("http://10.203.71.176:8080/myservlet/json/mall/about.json")
                 .build()
                 .get()
                 .subscribeOn(Schedulers.io())
@@ -58,8 +60,8 @@ public class AboutDelegate extends BaseDelegate {
                         final String info = JSON.parseObject(s).getString("toolData");
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                             mTextView.setText(Html.fromHtml(info, Html.FROM_HTML_MODE_COMPACT));
-                        } else {
-                            mTextView.setText(info);
+                        }else {
+                            mTextView.setText(Html.fromHtml(info));
                         }
                     }
 
@@ -67,6 +69,7 @@ public class AboutDelegate extends BaseDelegate {
                     public void onError(Throwable e) {
                         //取消进度条
                         MyLoader.stopLoading();
+                        Toast.makeText(getContext(),"网络异常，加载失败！",Toast.LENGTH_SHORT).show();
                     }
 
                     @Override

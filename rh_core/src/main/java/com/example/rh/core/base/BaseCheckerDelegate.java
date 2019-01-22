@@ -118,9 +118,9 @@ public abstract class BaseCheckerDelegate extends BaseFragment {
                 case RequestCodes.TAKE_PHOTO:
                     MyLogger.i("BaseCheckerDelegate", "拍照");
                     final Uri resultUri = CameraImageBean.getInstance().getPath();
-                    //剪裁后的图片替换原路径中的图片
+                    //剪裁后的图片替换原路径中的图片break;
                     cropPicture(resultUri, null);
-                    break;
+
                 case RequestCodes.PICK_PHOTO:
                     if (data != null) {
                         MyLogger.i("BaseCheckerDelegate", "本地图片剪裁");

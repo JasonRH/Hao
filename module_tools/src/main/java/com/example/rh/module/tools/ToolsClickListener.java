@@ -38,7 +38,8 @@ public class ToolsClickListener extends SimpleClickListener {
                 break;
             default:
                 if (bean.getDelegate() != null) {
-                    DELEGATE.getSupportDelegate().start(bean.getDelegate());
+                    //DELEGATE.getSupportDelegate().start(bean.getDelegate());
+                    DELEGATE.getMyParentFragment().getSupportDelegate().start(bean.getDelegate());
                 }else {
                     Toast.makeText(MyApp.getApplicationContext(),"功能开发中，敬请期待！",Toast.LENGTH_SHORT).show();
                 }

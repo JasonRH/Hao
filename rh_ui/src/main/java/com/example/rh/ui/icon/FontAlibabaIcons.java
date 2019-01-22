@@ -19,7 +19,11 @@ public enum FontAlibabaIcons implements Icon {
     icon_sd_card('\uec35'),
     icon_jiancai('\ue600'),
     icon_erweima('\ue642'),
-    icon_gongjuxiang('\ue607');
+    icon_gongjuxiang('\ue607'),
+    icon_chahao ('\ue618'),
+    icon_youjiantou('\ue62c'),
+    icon_alternating('\ue61a'),
+    icon_translate('\ue63d');
 
     private char character;
 

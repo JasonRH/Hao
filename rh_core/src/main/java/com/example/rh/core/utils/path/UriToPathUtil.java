@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 
+import com.example.rh.core.utils.log.MyLogger;
+
 /**
  * @author RH
  * @date 2019/1/15
@@ -17,6 +19,7 @@ public class UriToPathUtil {
     public static String handleImageOnKitKat(Context context,Intent data) {
         String imagePath = null;
         Uri uri = data.getData();
+        MyLogger.i("UriToPathUtil",uri.getPath());
         if (DocumentsContract.isDocumentUri(context, uri)) {
             String docId = DocumentsContract.getDocumentId(uri);
             if (uri != null) {

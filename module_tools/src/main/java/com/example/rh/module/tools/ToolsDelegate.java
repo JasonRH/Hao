@@ -8,9 +8,11 @@ import android.view.View;
 import com.example.rh.core.base.BasePresenter;
 import com.example.rh.core.fragment.bottom.BottomItemFragment;
 import com.example.rh.module.tools.qrcode.ScannerDelegate;
+import com.example.rh.module.tools.translate.TranslateDelegate;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 
 /**
@@ -47,13 +49,20 @@ public class ToolsDelegate extends BottomItemFragment {
                 .setIcon("{icon-jiancai}")
                 .setText("图片剪裁")
                 .build();
-
+        final ToolBean translate = new ToolBean.Builder()
+                .setItemType(ToolItemType.ITEM_NORMAL)
+                .setId(3)
+                .setIcon("{icon-translate}")
+                .setText("翻译")
+                .setDelegate(new TranslateDelegate())
+                .build();
 
         final List<ToolBean> data = new ArrayList<>();
         data.add(qrcode);
         data.add(qrcode1);
+        data.add(translate);
 
-        final GridLayoutManager manager = new GridLayoutManager(getContext(),3);
+        final GridLayoutManager manager = new GridLayoutManager(getContext(), 3);
         recyclerView.setLayoutManager(manager);
         final ToolsAdapter adapter = new ToolsAdapter(data);
         recyclerView.setAdapter(adapter);

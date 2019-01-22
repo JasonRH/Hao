@@ -22,8 +22,9 @@
         android:id="@+id/tv_info"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="top|left"
-        android:padding="20dp"
+        android:paddingTop="10dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
         android:textColor="@android:color/darker_gray"
         android:textSize="18sp" />
 

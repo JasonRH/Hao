@@ -60,9 +60,10 @@ public class ScannerDelegate extends BaseDelegate<ScannerPresenter> implements I
 
     @OnClick(R2.id.delegate_sanner_local)
     void onClickLocalScanQrCode() {
+        //打开相册
         final Intent intent = new Intent();
         intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         startActivityForResult(intent, RequestCodes.PICK_LOCAL_QR);
     }
