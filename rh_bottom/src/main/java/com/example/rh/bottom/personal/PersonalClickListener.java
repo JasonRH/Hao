@@ -9,6 +9,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.example.rh.bottom.personal.list.ListBean;
 import com.example.rh.core.base.BaseDelegate;
+import com.example.rh.core.utils.log.MyLogger;
 import com.example.rh.daily.fileExplorer.OpenFileActivity;
 
 /**
@@ -32,13 +33,13 @@ public class PersonalClickListener extends SimpleClickListener {
                 if (bean.getmFragment() != null) {
                     fragment.getMyParentFragment().getSupportDelegate().start(bean.getmFragment());
                 } else {
-                    //Toast.makeText(fragment.getContext(), "功能开发中，敬请关注！", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(fragment.getContext(), OpenFileActivity.class);
                     fragment.startActivity(intent);
                 }
                 break;
             case 1:
                 if (bean.getmFragment() != null) {
+                    MyLogger.d("PersonalClickListener",fragment.getMyParentFragment().toString());
                     fragment.getMyParentFragment().getSupportDelegate().start(bean.getmFragment());
                 } else {
                     Toast.makeText(fragment.getContext(), "功能开发中，敬请关注！", Toast.LENGTH_SHORT).show();
