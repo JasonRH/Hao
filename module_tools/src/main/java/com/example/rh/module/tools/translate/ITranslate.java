@@ -1,7 +1,5 @@
 package com.example.rh.module.tools.translate;
 
-import android.graphics.Bitmap;
-
 /**
  * @author RH
  * @date 2019/1/21

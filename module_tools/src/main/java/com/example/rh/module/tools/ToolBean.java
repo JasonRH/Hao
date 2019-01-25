@@ -1,7 +1,6 @@
 package com.example.rh.module.tools;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
-import com.example.rh.core.base.BaseDelegate;
 import com.example.rh.core.base.BaseFragment;
 
 /**

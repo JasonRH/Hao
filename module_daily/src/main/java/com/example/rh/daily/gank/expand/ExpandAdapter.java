@@ -7,7 +7,6 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.example.rh.core.fragment.web.WebFragmentImpl;
 import com.example.rh.core.utils.log.MyLogger;
 import com.example.rh.daily.R;
 import com.example.rh.daily.activity.WebActivity;

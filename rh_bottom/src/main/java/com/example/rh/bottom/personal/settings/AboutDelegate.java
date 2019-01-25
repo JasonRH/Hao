@@ -14,7 +14,6 @@ import com.example.rh.core.base.BaseDelegate;
 import com.example.rh.core.base.BasePresenter;
 import com.example.rh.core.net_rx.RxRetrofitClient;
 import com.example.rh.core.ui.loader.MyLoader;
-import com.example.rh.core.utils.log.MyLogger;
 
 import butterknife.BindView;
 import io.reactivex.Observer;

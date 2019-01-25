@@ -6,20 +6,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.rh.core.base.BasePresenter;
 import com.example.rh.core.net_rx.RxRetrofitClient;
 import com.example.rh.core.utils.log.MyLogger;
-import com.google.cloud.translate.Translate;
-import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function;
-import io.reactivex.internal.operators.flowable.FlowableOnErrorReturn;
 import io.reactivex.schedulers.Schedulers;
 
 /**

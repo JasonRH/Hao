@@ -1,7 +1,5 @@
 package com.example.rh.daily.gank.beauty;
 
-import com.example.rh.daily.bing.BingDailyBean;
-
 import java.util.List;
 
 /**

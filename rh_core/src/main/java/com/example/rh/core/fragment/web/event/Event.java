@@ -3,7 +3,6 @@ package com.example.rh.core.fragment.web.event;
 import android.content.Context;
 import android.webkit.WebView;
 
-import com.example.rh.core.base.BaseDelegate;
 import com.example.rh.core.fragment.web.BaseWebFragment;
 
 /**

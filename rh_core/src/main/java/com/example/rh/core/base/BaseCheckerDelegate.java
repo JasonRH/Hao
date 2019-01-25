@@ -12,9 +12,6 @@ import com.example.rh.core.ui.camera.CameraImageBean;
 import com.example.rh.core.ui.camera.MyCamera;
 import com.example.rh.core.ui.camera.RequestCodes;
 import com.example.rh.core.ui.scanner.ScannerFragment;
-import com.example.rh.core.utils.callback.CallbackManager;
-import com.example.rh.core.utils.callback.CallbackType;
-import com.example.rh.core.utils.callback.IGlobalCallback;
 import com.example.rh.core.utils.log.MyLogger;
 import com.yalantis.ucrop.UCrop;
 

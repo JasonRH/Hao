@@ -9,9 +9,6 @@ import android.widget.RelativeLayout;
 import com.example.rh.core.base.BaseDelegate;
 import com.example.rh.module.tools.R;
 import com.example.rh.module.tools.R2;
-import com.google.cloud.translate.Translate;
-import com.google.cloud.translate.TranslateOptions;
-import com.google.cloud.translate.Translation;
 
 import butterknife.BindView;
 import butterknife.OnClick;

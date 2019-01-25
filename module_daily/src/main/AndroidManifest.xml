@@ -8,20 +8,20 @@
             android:label=""
             android:theme="@style/PictureTheme" />
         <activity
-            android:name=".fileExplorer.OpenFileActivity"
+            android:name="com.example.rh.daily.fileExplorer.OpenFileActivity"
             android:label=""
             android:theme="@style/PictureTheme" />
 
-        <service android:name=".download.DownloadService" />
+        <service android:name="com.example.rh.daily.download.DownloadService" />
 
 
         <activity
-            android:name=".activity.ShowImageActivity"
+            android:name="com.example.rh.daily.activity.ShowImageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ShowImage" />
 
         <activity
-            android:name=".activity.WebActivity"
+            android:name="com.example.rh.daily.activity.WebActivity"
             android:label=""/>
 
     </application>

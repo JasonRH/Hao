@@ -11,8 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 
-import com.example.rh.core.base.BaseActivity;
-
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.yokeyword.fragmentation.ExtraTransaction;

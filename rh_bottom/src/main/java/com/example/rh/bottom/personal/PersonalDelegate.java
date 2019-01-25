@@ -13,8 +13,6 @@ import com.example.rh.bottom.personal.list.ListItemType;
 import com.example.rh.bottom.personal.settings.SettingsDelegate;
 import com.example.rh.core.base.BasePresenter;
 import com.example.rh.core.fragment.bottom.BottomItemFragment;
-import com.example.rh.module.tools.ToolBean;
-import com.example.rh.module.tools.ToolItemType;
 
 import java.util.ArrayList;
 import java.util.List;

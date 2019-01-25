@@ -21,7 +21,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.rh.core.app.MyApp;
 import com.example.rh.core.ui.dialog.MyDialog;
-import com.example.rh.core.utils.log.MyLogger;
 import com.example.rh.daily.R;
 import com.example.rh.daily.download.DownloadListener;
 import com.example.rh.daily.download.DownloadService;

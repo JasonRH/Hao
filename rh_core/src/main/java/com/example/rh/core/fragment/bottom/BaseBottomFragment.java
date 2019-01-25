@@ -12,7 +12,6 @@ import android.widget.RelativeLayout;
 
 import com.example.rh.core.R;
 import com.example.rh.core.R2;
-import com.example.rh.core.base.BaseCheckerDelegate;
 import com.example.rh.core.base.BaseDelegate;
 import com.joanzapata.iconify.widget.IconTextView;
 

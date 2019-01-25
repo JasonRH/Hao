@@ -2,7 +2,6 @@ package com.example.rh.core.net_rx;
 
 import android.content.Context;
 
-import com.example.rh.core.app.MyApp;
 import com.example.rh.core.ui.loader.LoaderStyle;
 import com.example.rh.core.ui.loader.MyLoader;
 

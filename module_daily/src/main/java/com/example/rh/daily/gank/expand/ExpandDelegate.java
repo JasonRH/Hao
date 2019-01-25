@@ -1,13 +1,10 @@
 package com.example.rh.daily.gank.expand;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.example.rh.core.fragment.web.WebFragmentImpl;
-import com.example.rh.daily.R;
 import com.example.rh.daily.fragment.BaseHotDelegate;
 
 import java.util.ArrayList;

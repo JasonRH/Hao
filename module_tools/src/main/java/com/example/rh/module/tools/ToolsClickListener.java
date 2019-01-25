@@ -1,6 +1,5 @@
 package com.example.rh.module.tools;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 

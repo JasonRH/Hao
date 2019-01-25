@@ -7,7 +7,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.rh.core.base.BasePresenter;
 import com.example.rh.core.net_rx.RxRetrofitClient;
-import com.example.rh.core.utils.log.MyLogger;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
