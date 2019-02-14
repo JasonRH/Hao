@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><!--自定义EditText的光标-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!--  定义边框线（边框线宽度是2，颜色为白色）   -->
+    <stroke android:width="2dp" android:color="#FF4040" />
+</shape>

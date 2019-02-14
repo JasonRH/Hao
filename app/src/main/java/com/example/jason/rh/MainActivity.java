@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.rh.bottom.BottomActivity;
+import com.example.rh.core.app.MyApp;
+import com.xiaomi.market.sdk.XiaomiUpdateAgent;
 
 
 /**
@@ -17,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //调用检查更新接口
-        //XiaomiUpdateAgent.update(MyApp.getApplicationContext());
+        XiaomiUpdateAgent.update(MyApp.getApplicationContext());
 
         startActivity(new Intent(this, BottomActivity.class));
         finish();

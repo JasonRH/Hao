@@ -11,6 +11,7 @@ import com.example.rh.core.fragment.bottom.BottomItemFragment;
 import com.example.rh.daily.bing.BingPictureDelegate;
 import com.example.rh.daily.gank.beauty.GankPictureDelegate;
 import com.example.rh.daily.gank.expand.ExpandDelegate;
+import com.example.rh.daily.wanandroid.WanDelegate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,8 @@ public class DailyDelegate extends BottomItemFragment {
 
     private void initFragmentPagerAdapter() {
         List<Fragment> fragmentList = new ArrayList<>();
-        String[] strings = new String[]{"文章", "必应", "美女"};
+        String[] strings = new String[]{"Android", "拓展", "必应", "美女"};
+        fragmentList.add(new WanDelegate());
         fragmentList.add(new ExpandDelegate());
         fragmentList.add(new BingPictureDelegate());
         fragmentList.add(new GankPictureDelegate());

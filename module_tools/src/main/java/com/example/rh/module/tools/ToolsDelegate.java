@@ -53,7 +53,7 @@ public class ToolsDelegate extends BottomItemFragment {
                 .setItemType(ToolItemType.ITEM_NORMAL)
                 .setId(3)
                 .setIcon("{icon-translate}")
-                .setText("翻译")
+                .setText("英汉翻译")
                 .setDelegate(new TranslateDelegate())
                 .build();
 

@@ -37,7 +37,6 @@ public class ExpandAdapter extends BaseQuickAdapter<ExpandBean, BaseViewHolder> 
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, WebActivity.class);
                 intent.putExtra("url", item.getUrl());
-                MyLogger.i("ExpandAdapter",item.getUrl());
                 mContext.startActivity(intent);
             }
         });

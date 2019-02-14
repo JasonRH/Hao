@@ -2,12 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jason.rh">
 
-    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="com.xiaomi.market.sdk.UPDATE" />-->
+    <uses-permission android:name="com.xiaomi.market.sdk.UPDATE" />
 
     <application
         android:name="com.example.jason.rh.MyApplication"
@@ -28,15 +28,15 @@
 
         <activity android:name="com.example.rh.bottom.BottomActivity" />
 
-        <!--<provider
+        <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.example.rh.selfupdate.fileprovider"
+            android:authorities="com.example.jason.rh.selfupdate.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/xiaomi_update_sdk_file_paths" />
-        </provider>-->
+        </provider>
 
     </application>
 
