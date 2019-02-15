@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">rh_bottom</string>
+    <string name="app_info">这是一款开源的工具类APP</string>
+    <string name="app_address">https://github.com/JasonRH/Hao</string>
+    <string name="app_contact">联系方式：\nQQ：1178048321</string>
+    <string name="about_api">
+        1.http://www.bing.com/HPImageArchive.aspx?format=js&amp;idx=-1&amp;n=8\n
+        2.http://gank.io/api/data/福利/10/1\n
+        3.http://gank.io/api/data/拓展资源/10/1\n
+        4.有道词典\n
+        5.http://www.wanandroid.com/article/list/0/json
+    </string>
 </resources>

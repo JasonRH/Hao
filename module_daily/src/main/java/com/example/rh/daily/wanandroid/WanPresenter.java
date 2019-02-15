@@ -87,7 +87,7 @@ public class WanPresenter extends BasePresenter<IWan.View> implements IWan.Prese
                                     .build();
                             dataList.add(bean);
                         }
-                        if (page > 1) {
+                        if (page > 0) {
                             getMyView().onLoadMoreData(dataList);
                         } else {
                             getMyView().onLoadNewData(dataList);

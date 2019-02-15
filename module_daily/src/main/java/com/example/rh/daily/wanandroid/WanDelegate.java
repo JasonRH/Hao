@@ -83,7 +83,7 @@ public class WanDelegate extends BaseHotDelegate<WanPresenter> implements IWan.V
 
     @Override
     public void showToast(String s) {
-        if (page > 1) {
+        if (page > 0) {
             //加载失败
             adapter.loadMoreFail();
         } else {

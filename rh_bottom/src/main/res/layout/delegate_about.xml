@@ -21,9 +21,59 @@
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/tv_info"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="10dp"
+        android:layout_height="wrap_content"
         android:paddingStart="5dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="5dp"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="18sp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="5dp"
+        android:paddingTop="30dp"
+        android:paddingEnd="5dp"
+        android:text="代码仓库地址： "
+        android:textColor="@android:color/darker_gray"
+        android:textSize="18sp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_adress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="5dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="5dp"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="18sp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="5dp"
+        android:paddingTop="30dp"
+        android:paddingEnd="5dp"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="18sp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingStart="5dp"
+        android:paddingTop="30dp"
+        android:paddingEnd="5dp"
+        android:text="感谢以下API提供者"
+        android:textSize="18sp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_api"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="5dp"
+        android:paddingTop="10dp"
         android:paddingEnd="5dp"
         android:textColor="@android:color/darker_gray"
         android:textSize="18sp" />
