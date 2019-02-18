@@ -1,11 +1,20 @@
 package com.example.rh.bottom.personal.settings;
 
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
+import com.example.rh.bottom.R;
 import com.example.rh.bottom.personal.list.ListBean;
 import com.example.rh.core.base.BaseDelegate;
+import com.example.rh.core.utils.cache.CacheUtils;
+import com.example.rh.core.utils.log.MyLogger;
+import com.joanzapata.iconify.widget.IconTextView;
+
+import java.util.Objects;
 
 /**
  * @author RH
@@ -28,7 +37,15 @@ public class SettingsClickListener extends SimpleClickListener {
                 //不需要打开新的Fragment
                 break;
             case 2:
-                DELEGATE.getSupportDelegate().start(bean.getmFragment());
+                try {
+                    IconTextView cacahe =view.findViewById(R.id.icon_arrow);
+                    CacheUtils.clearAllCache(Objects.requireNonNull(DELEGATE.getContext()));
+                    String cache = CacheUtils.getTotalCacheSize(DELEGATE.getContext());
+                    cacahe.setText(cache);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
                 break;
             default:
                 break;

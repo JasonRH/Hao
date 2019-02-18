@@ -12,6 +12,7 @@ import com.example.rh.bottom.personal.list.ListBean;
 import com.example.rh.bottom.personal.list.ListItemType;
 import com.example.rh.core.base.BaseDelegate;
 import com.example.rh.core.base.BasePresenter;
+import com.example.rh.core.utils.cache.CacheUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class SettingsDelegate extends BaseDelegate {
 
     @BindView(R2.id.delegate_settings_recycler)
     RecyclerView mRecyclerView = null;
+    String cache = "0.0B";
 
     @Override
     protected BasePresenter setPresenter() {
@@ -58,15 +60,20 @@ public class SettingsDelegate extends BaseDelegate {
                 .setText("消息推送")
                 .build();*/
 
+        try {
+            cache = CacheUtils.getTotalCacheSize(getContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         final ListBean about = new ListBean.Builder()
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_ICON_TEXT)
                 .setId(2)
-                .setmFragment(new AboutDelegate())
-                .setText("关于")
+                .setText("清除缓存")
+                .setValue(cache)
                 .build();
 
         final List<ListBean> data = new ArrayList<>();
-        //data.add(push);
         data.add(about);
 
         //设置RecyclerView

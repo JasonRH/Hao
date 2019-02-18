@@ -56,6 +56,7 @@ public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHol
                 IconTextView icon = helper.getView(R.id.tv_arrow_icon);
                 icon.setText(item.getImageUrl());
                 helper.setText(R.id.tv_text, item.getText());
+                helper.setText(R.id.icon_arrow, item.getValue());
                 break;
             default:
                 break;

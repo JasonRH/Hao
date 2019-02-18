@@ -10,6 +10,7 @@ import com.example.rh.bottom.R2;
 import com.example.rh.bottom.personal.list.ListAdapter;
 import com.example.rh.bottom.personal.list.ListBean;
 import com.example.rh.bottom.personal.list.ListItemType;
+import com.example.rh.bottom.personal.settings.AboutDelegate;
 import com.example.rh.bottom.personal.settings.SettingsDelegate;
 import com.example.rh.core.base.BasePresenter;
 import com.example.rh.core.fragment.bottom.BottomItemFragment;
@@ -49,15 +50,25 @@ public class PersonalDelegate extends BottomItemFragment {
                 .build();
 
         final ListBean system = new ListBean.Builder()
-                .setItemType(ListItemType.ITEM_NORMAL)
+                .setItemType(ListItemType.ITEM_ICON_TEXT)
                 .setId(1)
                 .setmFragment(new SettingsDelegate())
+                .setImageUrl("{icon-setting}")
                 .setText("系统设置")
+                .build();
+
+        final ListBean about = new ListBean.Builder()
+                .setItemType(ListItemType.ITEM_ICON_TEXT)
+                .setId(2)
+                .setmFragment(new AboutDelegate())
+                .setImageUrl("{icon-intro1}")
+                .setText("APP简介")
                 .build();
 
         final List<ListBean> data = new ArrayList<>();
         data.add(file);
         data.add(system);
+        data.add(about);
 
         //设置RecyclerView
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());

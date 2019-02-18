@@ -23,7 +23,10 @@ public enum FontAlibabaIcons implements Icon {
     icon_chahao ('\ue618'),
     icon_youjiantou('\ue62c'),
     icon_alternating('\ue61a'),
-    icon_translate('\ue63d');
+    icon_translate('\ue63d'),
+    icon_setting('\ue608'),
+    //icon_intro('\ue729');
+    icon_intro1('\ue601');
 
     private char character;
 
