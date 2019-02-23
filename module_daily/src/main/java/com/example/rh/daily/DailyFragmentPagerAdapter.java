@@ -9,6 +9,8 @@ import java.util.List;
 /**
  * @author RH
  * @date 2018/3/29
+ *
+ * FragmentStatePagerAdapter适用于页面较多的情况，而FragmentPagerAdapter内存未被回收。
  */
 public class DailyFragmentPagerAdapter extends FragmentStatePagerAdapter {
     private List<Fragment> fragmentList;
